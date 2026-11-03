@@ -1,0 +1,26 @@
+{
+  "name": "ghost-guestbook",
+  "displayName": "Ghost Guestbook",
+  "description": "Leave a message for the spirits.",
+  "theme": "ghost",
+  "collections": [
+    {
+      "name": "entries",
+      "label": "Messages from beyond",
+      "itemLabel": "message",
+      "titleField": "author",
+      "fields": [
+        { "name": "author", "label": "Your name", "type": "text", "required": true, "maxLength": 60 },
+        { "name": "message", "label": "Message", "type": "textarea", "required": true, "maxLength": 500 },
+        {
+          "name": "mood",
+          "label": "Mood",
+          "type": "select",
+          "required": true,
+          "options": ["eerie", "friendly", "restless"],
+          "icons": { "eerie": "👻", "friendly": "😊👻", "restless": "🌀👻" }
+        }
+      ]
+    }
+  ]
+}
