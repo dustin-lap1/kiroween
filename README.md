@@ -55,6 +55,46 @@ flowchart LR
 | `Apply-App` | applies the saved plan only; refuses stale plans and any delete or replace without a human's `-AllowDestroy` |
 | `Publish-App` | builds, uploads with cache headers, invalidates CloudFront, checks the site and `/api/health` |
 
+## Kickoff prompt (build an app in a Kiro chat)
+Open a Kiro window with only this repo, start a new **Vibe** session, and paste:
+
+```text
+Let's build a new app from the Skeleton Crew skeleton, as a conversation.
+Follow the new-app procedure in .kiro/steering/new-app.md and every steering
+rule in this repo. Work in checkpoints: do one checkpoint, report back in a few
+lines, and end with a question. Do not start the next checkpoint until I answer.
+
+1. Idea: ask me what the app is. Then propose the name (kebab-case), display
+   name, one-line description, theme (pumpkin, ghost, slime, or blood), and the
+   collections and fields for app.config.json. Wait for my OK or changes.
+2. Scaffold: run .\scripts\New-App.ps1 with the agreed values. Report the
+   account and the app folder.
+3. Spec: write .kiro/specs/<name>/requirements.md (EARS), design.md, and
+   tasks.md. Summarize them and ask me to approve or change them.
+4. Build: do the tasks, changing only apps/<name>/ and the spec. Run
+   npm run build in the app folder. Report what changed.
+5. Plan: run .\scripts\Plan-App.ps1 -Name <name> and show me the impact
+   summary exactly as printed. Wait for my explicit "yes".
+6. Apply: only after my "yes", run .\scripts\Apply-App.ps1 -Name <name>.
+7. Publish: run .\scripts\Publish-App.ps1 -Name <name>. Check /api/health,
+   create one item and list it through <site_url>/api, then give me the URL.
+8. Ask whether to commit and push. Do nothing with git until I say so.
+
+Never run terraform, destructive AWS commands, or Apply-App -AllowDestroy
+yourself. If anything fails, stop, explain it, and suggest the fix.
+```
+
+Sample answers when Kiro asks what the app is:
+
+- **App one:** A guestbook where visitors leave a message for the spirits:
+  their name, the message, and a mood (eerie, friendly, restless). Newest
+  first, and each message shows a ghost emoji that matches its mood. Call it
+  ghost-guestbook, ghost theme.
+- **App two:** A trick-or-treat candy tracker with two collections: candy
+  (name, kind: chocolate, gummy, sour, or hard, quantity as a number, nut free
+  yes or no) and visitors (costume, group size as a number). Show total pieces
+  of candy and total visitors at the top. Call it candy-stash, pumpkin theme.
+
 ## How Kiro is used
 
 ### Steering (`.kiro/steering/`)
