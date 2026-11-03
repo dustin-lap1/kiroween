@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Email the crew when a task completes",
+      "trigger": "PostTaskExec",
+      "description": "After each spec task completes, publishes a message to the kiroween-crew-alerts SNS topic, which emails the subscribed address. Set up with scripts/Setup-CrewAlerts.ps1.",
+      "action": {
+        "type": "command",
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/hooks/Send-TaskAlert.ps1",
+        "timeout": 30
+      }
+    }
+  ]
+}

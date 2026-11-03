@@ -1,0 +1,18 @@
+{
+  "name": "__APP_NAME__",
+  "displayName": "__APP_DISPLAY_NAME__",
+  "description": "__APP_DESCRIPTION__",
+  "theme": "__APP_THEME__",
+  "collections": [
+    {
+      "name": "notes",
+      "label": "Notes",
+      "itemLabel": "note",
+      "titleField": "title",
+      "fields": [
+        { "name": "title", "label": "Title", "type": "text", "required": true, "maxLength": 120 },
+        { "name": "body", "label": "Details", "type": "textarea", "maxLength": 2000 }
+      ]
+    }
+  ]
+}

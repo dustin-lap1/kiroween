@@ -1,0 +1,25 @@
+# Dependencies and builds
+node_modules/
+dist/
+
+# Local machine state (account ids, emails, plan records). Never commit.
+.local/
+scripts/config.local.psd1
+
+# Terraform working files
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+tfplan
+backend.hcl
+local.auto.tfvars
+**/infra/.build/
+
+# Editors and OS
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+
+# NOTE: .kiro/ must stay committed (hackathon rule). Do not add it here.

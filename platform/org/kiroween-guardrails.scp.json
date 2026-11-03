@@ -1,0 +1,45 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyOutsideUsEast1NoExceptions",
+      "Effect": "Deny",
+      "NotAction": [
+        "iam:*", "sts:*", "organizations:*", "account:*",
+        "cloudfront:*", "route53:*", "route53domains:*", "acm:*", "waf:*", "wafv2:*",
+        "budgets:*", "ce:*", "cur:*", "billing:*", "aws-portal:*",
+        "support:*", "trustedadvisor:*", "health:*", "tag:*",
+        "s3:GetBucketLocation", "s3:ListAllMyBuckets"
+      ],
+      "Resource": "*",
+      "Condition": { "StringNotEquals": { "aws:RequestedRegion": "us-east-1" } }
+    },
+    {
+      "Sid": "DenyLongLivedCredentials",
+      "Effect": "Deny",
+      "Action": ["iam:CreateUser", "iam:CreateAccessKey", "iam:CreateLoginProfile"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "ProtectDeployerRole",
+      "Effect": "Deny",
+      "Action": [
+        "iam:DeleteRole", "iam:UpdateAssumeRolePolicy", "iam:AttachRolePolicy", "iam:DetachRolePolicy",
+        "iam:PutRolePolicy", "iam:DeleteRolePolicy", "iam:PutRolePermissionsBoundary", "iam:DeleteRolePermissionsBoundary"
+      ],
+      "Resource": "arn:aws:iam::*:role/skeleton-deployer",
+      "Condition": { "ArnNotLike": { "aws:PrincipalARN": "arn:aws:iam::*:role/OrganizationAccountAccessRole" } }
+    },
+    {
+      "Sid": "ProtectTerraformState",
+      "Effect": "Deny",
+      "Action": ["s3:DeleteBucket", "s3:DeleteObjectVersion", "s3:PutLifecycleConfiguration", "dynamodb:DeleteTable"],
+      "Resource": [
+        "arn:aws:s3:::*-tfstate-*",
+        "arn:aws:s3:::*-tfstate-*/*",
+        "arn:aws:dynamodb:*:*:table/terraform-locks"
+      ],
+      "Condition": { "ArnNotLike": { "aws:PrincipalARN": "arn:aws:iam::*:role/OrganizationAccountAccessRole" } }
+    }
+  ]
+}

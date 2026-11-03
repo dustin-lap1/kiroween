@@ -1,0 +1,21 @@
+# Tasks: Skeleton foundation
+
+- [x] 1. Organization guardrails
+  - [x] 1.1 Project SCP `platform/org/kiroween-guardrails.scp.json`
+  - [x] 1.2 `scripts/Setup-Org.ps1`: OU `Kiroween-2026`, SCP attached to the OU only
+  - _Requirements: 2.1, 2.2_
+- [x] 2. Account vending `scripts/New-AppAccount.ps1` (account, move to OU, deployer role, profile, state)
+  - _Requirements: 2.1, 2.3, 2.4, 2.5_
+- [x] 3. Skeleton API (`skeleton/api`): routing, validation, CRUD, health
+  - _Requirements: 3.1 to 3.4_
+- [x] 4. Skeleton UI (`skeleton/src`): themes, config-driven panels
+  - _Requirements: 4.1 to 4.3_
+- [x] 5. Skeleton infrastructure (`skeleton/infra`)
+  - _Requirements: 3, 5.3, 6.3_
+- [x] 6. Pipeline scripts: `New-App`, `Plan-App`, `Apply-App`, `Publish-App`
+  - _Requirements: 1, 5.1, 5.2, 6.1_
+- [x] 7. Hooks: shell guardrails, task-complete email, app config check
+  - _Requirements: 5.4, 6.2_
+- [x] 8. Steering: architecture, Terraform guardrails, deployment, access, accounts, new-app procedure
+- [ ] 9. Build app one from the skeleton with the new-app procedure (live demo)
+- [ ] 10. Build app two from the skeleton with the same procedure (live demo)

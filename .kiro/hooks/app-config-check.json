@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "App config changed",
+      "trigger": "PostFileSave",
+      "description": "When an app.config.json is saved, the agent checks it against the skeleton's config rules and reminds that the API needs a Plan-App/Apply-App to pick up collection changes.",
+      "matcher": "app\\.config\\.json$",
+      "action": {
+        "type": "agent",
+        "prompt": "An app.config.json was just saved. Check it against the rules in .kiro/steering/app-config.md: collection names match ^[a-z][a-z0-9-]{0,39}$, field names match ^[a-zA-Z][a-zA-Z0-9_]{0,39}$ and are not pk, sk, id, createdAt, or updatedAt, field types are text, textarea, number, boolean, select, url, or email, and every select has options. Report any problem briefly. If collections or fields changed, remind me that the Lambda reads them from its environment, so the change ships through .\\scripts\\Plan-App.ps1 and .\\scripts\\Apply-App.ps1, not Publish-App alone."
+      }
+    }
+  ]
+}

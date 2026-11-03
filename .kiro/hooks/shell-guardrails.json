@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Infrastructure guardrails",
+      "trigger": "PreToolUse",
+      "description": "Blocks direct terraform apply/destroy, -auto-approve, state surgery, Apply-App -AllowDestroy, and destructive AWS CLI calls. Infra changes go through Plan-App (reviewed) and Apply-App (saved plan only).",
+      "matcher": "shell",
+      "action": {
+        "type": "command",
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/hooks/Test-ShellCommand.ps1",
+        "timeout": 15
+      }
+    }
+  ]
+}
