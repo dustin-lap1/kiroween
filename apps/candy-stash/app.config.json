@@ -1,0 +1,30 @@
+{
+  "name": "candy-stash",
+  "displayName": "Candy Stash",
+  "description": "Count the loot and the little monsters who came knocking.",
+  "theme": "pumpkin",
+  "collections": [
+    {
+      "name": "candy",
+      "label": "The stash",
+      "itemLabel": "candy",
+      "titleField": "name",
+      "fields": [
+        { "name": "name", "label": "Candy", "type": "text", "required": true, "maxLength": 60 },
+        { "name": "kind", "label": "Kind", "type": "select", "required": true, "options": ["chocolate", "gummy", "sour", "hard"] },
+        { "name": "quantity", "label": "Pieces", "type": "number", "required": true, "integer": true, "min": 1, "max": 100000 },
+        { "name": "nutFree", "label": "Nut free", "type": "boolean" }
+      ]
+    },
+    {
+      "name": "visitors",
+      "label": "Trick-or-treaters",
+      "itemLabel": "visitor group",
+      "titleField": "costume",
+      "fields": [
+        { "name": "costume", "label": "Costume", "type": "text", "required": true, "maxLength": 80 },
+        { "name": "groupSize", "label": "Group size", "type": "number", "required": true, "integer": true, "min": 1, "max": 100 }
+      ]
+    }
+  ]
+}

@@ -94,6 +94,11 @@ Sample answers when Kiro asks what the app is:
   (name, kind: chocolate, gummy, sour, or hard, quantity as a number, nut free
   yes or no) and visitors (costume, group size as a number). Show total pieces
   of candy and total visitors at the top. Call it candy-stash, pumpkin theme.
+- **App three:** A witch's potion shelf with one collection: potions (name,
+  color: green, purple, or black, effect as a longer description, brewing time
+  in minutes as a number, safe to drink yes or no, and a recipe link as a URL).
+  Newest first, with color filter buttons above the list. Call it potion-shelf,
+  slime theme.
 
 ## How Kiro is used
 

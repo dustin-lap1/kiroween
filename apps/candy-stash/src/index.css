@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+/*
+  Theme tokens. app.config.json "theme" picks one of the [data-theme] blocks
+  below; components only use the semantic utilities (bg-surface, text-ink,
+  bg-accent, border-edge, ...), so a new theme is one block here.
+*/
+@theme inline {
+  --color-surface: var(--app-surface);
+  --color-panel: var(--app-panel);
+  --color-edge: var(--app-edge);
+  --color-ink: var(--app-ink);
+  --color-muted: var(--app-muted);
+  --color-accent: var(--app-accent);
+  --color-accent-ink: var(--app-accent-ink);
+  --font-display: var(--app-font-display);
+}
+
+:root,
+[data-theme="pumpkin"] {
+  --app-surface: #120c08;
+  --app-panel: #1f150d;
+  --app-edge: #3b2715;
+  --app-ink: #fdf4e7;
+  --app-muted: #c9a98a;
+  --app-accent: #f97316;
+  --app-accent-ink: #1a0d02;
+  --app-font-display: "Georgia", ui-serif, serif;
+}
+
+[data-theme="ghost"] {
+  --app-surface: #0b0d17;
+  --app-panel: #141829;
+  --app-edge: #262c47;
+  --app-ink: #eef0ff;
+  --app-muted: #9aa3c7;
+  --app-accent: #a78bfa;
+  --app-accent-ink: #120a2b;
+  --app-font-display: ui-sans-serif, system-ui, sans-serif;
+}
+
+[data-theme="slime"] {
+  --app-surface: #07110a;
+  --app-panel: #0e1c12;
+  --app-edge: #1d3a24;
+  --app-ink: #eafff0;
+  --app-muted: #9cc7a8;
+  --app-accent: #4ade80;
+  --app-accent-ink: #03140a;
+  --app-font-display: ui-monospace, "Cascadia Code", monospace;
+}
+
+[data-theme="blood"] {
+  --app-surface: #120507;
+  --app-panel: #1e0a0d;
+  --app-edge: #3d1419;
+  --app-ink: #fff0f1;
+  --app-muted: #d29aa1;
+  --app-accent: #ef4444;
+  --app-accent-ink: #1f0204;
+  --app-font-display: "Georgia", ui-serif, serif;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--app-surface);
+  color: var(--app-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
