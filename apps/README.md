@@ -6,5 +6,5 @@ Each folder here is one app, created with `.\scripts\New-App.ps1` from
 
 | App | What it shows | Spec |
 |---|---|---|
-| _app one_ | built live at the kickoff | `.kiro/specs/<app-one>/` |
-| _app two_ | same pipeline, different app | `.kiro/specs/<app-two>/` |
+| [`ghost-guestbook`](ghost-guestbook/) | one collection (entries), mood emoji per message, ghost theme | `.kiro/specs/ghost-guestbook/` |
+| [`candy-stash`](candy-stash/) | two collections (candy, visitors), number validation, a `GET /api/stats` totals endpoint, pumpkin theme | `.kiro/specs/candy-stash/` |
